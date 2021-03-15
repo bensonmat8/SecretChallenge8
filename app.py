@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, flash, render_template, request
 
 app = Flask(__name__)
+app.secret_key = b'This is a long test secret key'
 
 @app.route('/')
 def home():
@@ -11,8 +12,15 @@ def challenge1():
     columns = None
     if request.method == 'POST':
         uploaded_file = request.files['data_file']
-        content = uploaded_file.read().split('\n')
+        try:
+            content = uploaded_file.read().decode("utf-8").split('\n')
+        except:
+            flash('Invalid file given, please try again')
+            return render_template('challenge1.html', columns=columns)
         columns = [x for x in content[0].split('\t')]
+        if '7_2009' not in columns:
+            flash("Column '7_2009' not found in the file, please try again.")
+            render_template('challenge1.html', columns=columns)
     return render_template('challenge1.html', columns=columns)
 
 @app.route('/Challenge2', methods=['GET', 'POST'])
