@@ -1,0 +1,72 @@
+<title>{% block title %}{% endblock %} - Test</title>
+
+<header id="main-header" data-height-onload="102" data-height-loaded="true" data-fixed-height-onload="102" style="top: 0px;" class="">
+
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style type="text/css">
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: Baskerville;
+        }
+
+        .header_ {
+            background-image: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);
+            height: 10%;
+            background-size: cover;
+            position: relative;
+            background-position: center;
+            position: relative;
+            background-repeat: no-repeat;
+        }
+
+        .header-text {
+            top: 50%;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white
+        }
+
+        .form-grid {
+            background-color: grey;
+            display: grid;
+            padding: 1px;
+            grid-column-gap: 1px;
+            grid-row-gap: 1px;
+            grid-template-columns: auto auto;
+        }
+
+        .grid-item {
+            background-color: white;
+            padding: 7px;
+            text-align: left;
+        }
+    </style>
+<div class="header_">
+    <div class="header-text">
+        <h1>L7 Challenge</h1>
+    </div>
+    <div style="position: absolute; top:10px; left: 10px;">
+        <img src="https://l7informatics.com/wp-content/uploads/2020/05/l7_logo.png"
+                height="70" width="350" data-actual-width="1186" data-actual-height="219.781">
+    </div>
+</div>
+</header>
+
+<section class="content">
+    <header>
+      {% block header %}{% endblock %}
+    </header>
+    {% for message in get_flashed_messages() %}
+      <div class="flash">{{ message }}</div>
+    {% endfor %}
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+  </section>
+  

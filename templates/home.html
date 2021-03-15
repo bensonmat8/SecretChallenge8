@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block header %}
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" href="{{url_for('home')}}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{url_for('challenge1')}}">Challenge 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{url_for('challenge2')}}">Challenge 2</a>
+    </li>
+  </ul>
+  <h1></h1>
+{% endblock %}
+
+{% block content %}
+  <h3>Select from the following challenge:</h3>
+  <li class="text-lg-left" ><a href="{{url_for('challenge1')}}"> Challenge 1</a></li>
+  <li class="text-lg-left" ><a href="{{url_for('challenge2')}}"> Challenge 2</a></li>
+
+{% endblock %}
