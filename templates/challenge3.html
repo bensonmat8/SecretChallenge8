@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block header %}
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" href="{{url_for('home')}}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{url_for('challenge1')}}">Challenge 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{url_for('challenge2')}}">Challenge 2</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="{{url_for('challenge3')}}">Challenge 3</a>
+    </li>
+  </ul>
+  <h1></h1>
+{% endblock %}
+
+{% block content %}
+  <h3>Challenge 3</h3>
+  <p>
+    <h5>Problem 1</h5>
+    <span>
+      TypeError: can only concatenate str (not "int") to str
+    </span>
+    <br>
+    This is because the funtion is designed to add two numbers and the first variable given is an string.
+  </p>
+
+  <p>
+    <h5>Problem 2</h5>
+    <span>
+      TypeError: unsupported operand type(s) for +: 'int' and 'str'
+    </span>
+    <br>
+    This is because the funtion is designed to add two numbers and the sencond variable given is an string.
+  </p>
+
+  <p>
+    <h5>Problem 3</h5>
+    <span>
+      TypeError: can't multiply sequence by non-int of type 'str'
+    </span>
+    <br>
+    This is because the funtion is designed to multiply two numbers and the two variables given are string.
+   </p>
+{% endblock %}

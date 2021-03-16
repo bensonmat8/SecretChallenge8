@@ -11,11 +11,14 @@
     <li class="nav-item">
       <a class="nav-link active" href="{{url_for('challenge2')}}">Challenge 2</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{url_for('challenge3')}}">Challenge 3</a>
+    </li>
   </ul>
   <h1></h1>
 {% endblock %}
 
 {% block content %}
-  <h3>Challenge</h3>
-
+  <h3>Challenge 2</h3>
+<img src="{{url_for('static', filename='L7 Widget.png')}}"  class="img-fluid" alt="Responsive image">
 {% endblock %}

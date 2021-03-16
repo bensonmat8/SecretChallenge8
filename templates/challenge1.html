@@ -11,6 +11,9 @@
     <li class="nav-item">
       <a class="nav-link" href="{{url_for('challenge2')}}">Challenge 2</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{url_for('challenge3')}}">Challenge 3</a>
+    </li>
   </ul>
   <h1></h1>
 {% endblock %}
@@ -23,5 +26,25 @@
   <br><br>
   <button class="btn btn-primary" type="submit">Submit</button>
 </form>
-{{columns}}
+
+{% if result is none %}
+{% elif result %}
+<div class="alert alert-success" role="alert">
+  The observed data satisfies Benford's Law
+</div>
+{% else %}
+<div class="alert alert-danger" role="alert">
+  The observed data does not satisfy chi-square test to confirm Benford's Law
+</div>
+{% endif %}
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+<div class="chart" id="bargraph">
+  <script>
+      var graphs = {{plot | safe}};
+      Plotly.plot('bargraph',graphs,{});
+  </script>
+</div>
+
 {% endblock %}
