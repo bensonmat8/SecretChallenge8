@@ -26,7 +26,7 @@
       TypeError: can only concatenate str (not "int") to str
     </span>
     <br>
-    This is because the funtion is asked to do an add operation on two variables and the first variable given is an string.
+    This is because the funtion is asked to do an add operation on two variables and the first variable given is a string and sencond variable is a integer.
   </p>
 
   <p>
@@ -35,7 +35,7 @@
       TypeError: unsupported operand type(s) for +: 'int' and 'str'
     </span>
     <br>
-    This is because the funtion is asked to do an add operation on two variables and the sencond variable given is an string.
+    This is because the funtion is asked to do an add operation on two variables and the first variable given is an integer the sencond variable given is an string.
   </p>
 
   <p>
@@ -82,5 +82,22 @@
   3rd item of the first variable given to 'comp_calc' function is a list ([3]). So when 'perform_calculation' is trying to add all the items in the list variables given from 'comp_calc', it is trying to add [3] and 6. You cannot add a list to an integer.
 </p>
 
+<p>
+  <h5>Problem 8</h5>
+  <span>
+    TypeError: unsupported operand type(s) for +: 'int' and 'str'
+   </span>
+  <br>
+  The goal I guess is to add the values of keys 'one' and 'two', but value of 'one' is integer and value of 'two' is string. You cannot add integer to string.
+</p>
 
+<p>
+  <h5>Problem 9</h5>
+  <span>
+    KeyError: 'one'
+   </span>
+  <br>
+  'calc_dict' is given a dictionary without the key 'one' and the program is asked to call key 'one' from the dictionary.
+</p>
+<br><br>
 {% endblock %}
