@@ -26,7 +26,7 @@
       TypeError: can only concatenate str (not "int") to str
     </span>
     <br>
-    This is because the funtion is designed to add two numbers and the first variable given is an string.
+    This is because the funtion is asked to do an add operation on two variables and the first variable given is an string.
   </p>
 
   <p>
@@ -35,7 +35,7 @@
       TypeError: unsupported operand type(s) for +: 'int' and 'str'
     </span>
     <br>
-    This is because the funtion is designed to add two numbers and the sencond variable given is an string.
+    This is because the funtion is asked to do an add operation on two variables and the sencond variable given is an string.
   </p>
 
   <p>
@@ -44,6 +44,43 @@
       TypeError: can't multiply sequence by non-int of type 'str'
     </span>
     <br>
-    This is because the funtion is designed to multiply two numbers and the two variables given are string.
+    This is because the funtion is asked to do a multiply operation on two variables and the two variables given are string.
    </p>
+
+   <p>
+    <h5>Problem 4</h5>
+    <span>
+      TypeError: can't multiply sequence by non-int of type 'list'
+    </span>
+    <br>
+    This is because the funtion is asked to do a multiply operation on two variables and the two variables given are 'list'.
+   </p>
+
+   <p>
+    <h5>Problem 5</h5>
+    <span>
+      ValueError: Invalid
+    </span>
+    <br>
+    First theory would be that function perform_calculation is given an arguement 'innoc' which is not defined in the funtion. And the function is designed to raise a ValueError if it sees something that is not designed, or it could be try-excpet where spelunk is throwing an exception.
+  </p>
+
+  <h5>Problem 6</h5>
+  <span>
+    TypeError: zip argument #2 must support iteration
+  </span>
+  <br>
+  Funtion comp_calc is programmed to zip() two lists and perform another operation, but one of the variable given is an integer and not a list. So, the zip() funtion is not able to iterate.
+ </p>
+
+ <p>
+  <h5>Problem 7</h5>
+  <span>
+    TypeError: can only concatenate list (not "int") to list
+   </span>
+  <br>
+  3rd item of the first variable given to 'comp_calc' function is a list ([3]). So when 'perform_calculation' is trying to add all the items in the list variables given from 'comp_calc', it is trying to add [3] and 6. You cannot add a list to an integer.
+</p>
+
+
 {% endblock %}
