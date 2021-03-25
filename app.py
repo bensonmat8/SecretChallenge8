@@ -16,9 +16,10 @@ def graph_plot(data_count):
     data_count = [round(x/total*100, 1) for x in data_count]
     x = [x for x in range(1,10)]
     benford = [30.1, 17.6, 12.5, 9.7, 7.9, 6.7, 5.8, 5.1, 4.6]
-    fig = px.line(x=x, y=benford)
+    fig = px.line(x=x, y=benford, labels="Benford Line")
     fig.add_bar(x=x, y=data_count, name='Observed Data')
-    fig.update_layout(xaxis_title='Digits',
+    fig.update_layout(title="Benford's Test",
+                    xaxis_title='Digits',
                     yaxis_title='Frequency (%)')
     graphJSON = json.dumps(fig, cls=PlotlyJSONEncoder)
     return graphJSON
