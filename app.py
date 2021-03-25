@@ -5,7 +5,8 @@ import plotly.express as px
 from plotly.utils import PlotlyJSONEncoder
 
 app = Flask(__name__)
-app.secret_key = b'This is a long test secret key'
+with open('secretkey.txt','r') as secret:
+    app.secret_key = secret.read()
 
 @app.route('/')
 def home():
@@ -16,7 +17,8 @@ def graph_plot(data_count):
     data_count = [round(x/total*100, 1) for x in data_count]
     x = [x for x in range(1,10)]
     benford = [30.1, 17.6, 12.5, 9.7, 7.9, 6.7, 5.8, 5.1, 4.6]
-    fig = px.line(x=x, y=benford, labels="Benford Line")
+    fig = px.line(x=x, y=benford)
+    fig.data[0].name = "Benford Line"
     fig.add_bar(x=x, y=data_count, name='Observed Data')
     fig.update_layout(title="Benford's Test",
                     xaxis_title='Digits',
