@@ -33,6 +33,14 @@ def challenge1():
     plot = None
     if request.method == 'POST':
         uploaded_file = request.files['data_file']
+        column_name = request.form.get('column_name')
+        if uploaded_file.filename == '':
+            flash('No File Given')
+            return render_template('challenge1.html', result=result
+            , plot=plot)
+        if column_name == '':
+            column_name = '7_2009'
+        
         try:
             content = uploaded_file.read().decode("utf-8").split('\n')
         except:
@@ -40,11 +48,28 @@ def challenge1():
             return render_template('challenge1.html', columns=columns)
         columns = [x for x in content[0].split('\t')]
         columns = columns + [x for x in content[0].split(',')]
-        if '7_2009' not in columns:
-            flash("Column '7_2009' not found in the file, please try again.")
-            render_template('challenge1.html', columns=columns)
-        result, data_count = benford_test(content)
-        plot =  graph_plot(data_count)
+        if column_name not in columns:
+            flash(f"Column '{column_name}' not found in the file, please try again.")
+            return render_template('challenge1.html', result=result
+            , plot=plot)
+        try:
+            result, data_count = benford_test(content, column_name)
+            plot =  graph_plot(data_count)
+        except:
+            flash('Invalid file/column name given, please try again')
+            return render_template('challenge1.html', result=result
+            , plot=plot)
+    return render_template('challenge1.html', result=result
+            , plot=plot)
+
+@app.route('/Challenge1#', methods=['GET', 'POST'])
+def challenge1_():
+    result=None
+    plot = None
+    with open('./static/census_2009b.txt','r') as file:
+        content = file.read().split('\n')
+    result, data_count = benford_test(content)
+    plot =  graph_plot(data_count)
     return render_template('challenge1.html', result=result
             , plot=plot)
 

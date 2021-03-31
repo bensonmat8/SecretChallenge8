@@ -1,11 +1,11 @@
 from math import log10
 
-def benford_test(content) -> tuple:
+def benford_test(content, column_name='7_2009') -> tuple:
     """
-    Takes the data from '7_2009' column and checks if the data
+    Takes the data and checks if the data
     satisy Benford's law by doing a Chi-Squared test
     """
-    data_set = process_data(content)
+    data_set = process_data(content, column_name)
     benford = [ 100*log10(1 + 1/n) for n in range(1, 10) ]
     total_count = 0
     data_count = [0]*9
@@ -22,18 +22,18 @@ def benford_test(content) -> tuple:
     result = chi_square_stat < 15.51 #Critical value at a P-value of 0.05 is 15.51
     return result, data_count
 
-def process_data(content) -> list:
+def process_data(content, column_name) -> list:
     """
-    Takes the content, looks for '7_2009' column and collects the
+    Takes the content, looks for the given column name and collects the
     first digit of the data into a list and returns the list
     """
-    if '7_2009' in [x for x in content[0].split('\t')]:
+    if column_name in [x for x in content[0].split('\t')]:
         sep = '\t'
-    elif '7_2009' in [x for x in content[0].split(',')]:
+    elif column_name in [x for x in content[0].split(',')]:
         sep = ','
     
     for idx,i in enumerate(content[0].split(sep)):
-        if '7_2009' == i:
+        if column_name == i:
             break
     data_set = []
     for line in content[1:]:
