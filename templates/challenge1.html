@@ -19,8 +19,12 @@
 {% endblock %}
 
 {% block content %}
-  <h3>Challenge 1: Benford's Law</h3>
+  <h3>Benford's Law</h3>
   <br>
+  Instruction: Upload a flat file (eg. CSV, TSV) and a desired column 
+  to check if the column data observes Benford's law. 
+  <br>  Note: column data can only be numeric values.
+  <br><br>
 <form action="{{url_for('challenge1')}}" method="POST" enctype="multipart/form-data">
   <input class="btn btn-outline-secondary" type="file" name="data_file">
   <br><br>
@@ -45,7 +49,8 @@
   }
 </style>
 <h2><span>OR</span></h2>
-<a href="{{url_for('challenge1_')}}">Click here</a> for using default data
+<a href="{{url_for('challenge1_')}}">Click here</a> for using our default data 
+to run Benford's Law test
 
 {% elif result %}
 <div class="alert alert-success" role="alert">
