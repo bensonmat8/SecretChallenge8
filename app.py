@@ -8,6 +8,7 @@ app = Flask(__name__)
 with open('secretkey.txt','r') as secret:
     app.secret_key = secret.read()
 
+@app.route('/Home')
 @app.route('/')
 def home():
     return render_template('home.html')
