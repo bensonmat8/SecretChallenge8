@@ -14,6 +14,9 @@ def home():
     return render_template('home.html')
 
 def graph_plot(data_count):
+    '''
+    Takes the data and returns plotly plot in JSON
+    '''
     total = sum(data_count)
     data_count = [round(x/total*100, 1) for x in data_count]
     x = [x for x in range(1,10)]
@@ -30,6 +33,11 @@ def graph_plot(data_count):
 
 @app.route('/Challenge1', methods=['GET', 'POST'])
 def challenge1():
+    '''
+    Takes the flat file provided from the frontend page and
+    runs the algorithm to check for benford_test and 
+    displays the result and plot
+    '''
     result = None
     plot = None
     if request.method == 'POST':
@@ -65,6 +73,11 @@ def challenge1():
 
 @app.route('/Challenge1#', methods=['GET', 'POST'])
 def challenge1_():
+    '''
+    This is similar to challenge1 as above, but
+    are for users who don't have the data so
+    it will use the data saved on static folder
+    '''
     result=None
     plot = None
     with open('./static/census_2009b.txt','r') as file:
@@ -76,8 +89,14 @@ def challenge1_():
 
 @app.route('/Challenge2', methods=['GET', 'POST'])
 def challenge2():
+    '''
+    Displays the widgets solution 
+    '''
     return render_template('challenge2.html')
 
 @app.route('/Challenge3', methods=['GET', 'POST'])
 def challenge3():
+    '''
+    Displays the error review solution
+    '''
     return render_template('challenge3.html')
