@@ -47,20 +47,29 @@ def challenge1():
             flash('No File Given')
             return render_template('challenge1.html', result=result
             , plot=plot)
+            
+        # If the user does not provide a column name
+        # column_name is assumed to be '7_2009'
         if column_name == '':
             column_name = '7_2009'
         
+        # Checks if te file provided is a flat file
         try:
             content = uploaded_file.read().decode("utf-8").split('\n')
         except:
             flash('Invalid file given, please try again')
             return render_template('challenge1.html', columns=columns)
+        
+        # Splits the content based on ',' and tab to accommodate
+        # csv and tsv files
         columns = [x for x in content[0].split('\t')]
         columns = columns + [x for x in content[0].split(',')]
         if column_name not in columns:
             flash(f"Column '{column_name}' not found in the file, please try again.")
             return render_template('challenge1.html', result=result
             , plot=plot)
+
+        # Running the algorithm to conduct benford_test
         try:
             result, data_count = benford_test(content, column_name)
             plot =  graph_plot(data_count)
